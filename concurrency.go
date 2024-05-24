@@ -177,15 +177,17 @@ package main
 
 import "fmt"
 
-func OneToTen() int {
+func OneToTen(chan int) int {
 	for i:=0;i<11;i++{
-		return i+1
+	
 	}
+	return i+1
 }
 
 func main(){
 	channel := make(chan int)
-	
+	go OneToTen(channel)
+	fmt.Println(<-channel)
 }
 
 // -------------------------------------------------------------------------------------
